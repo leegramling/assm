@@ -502,6 +502,286 @@ This tutorial teaches you to analyze assembly code when source isn't available, 
 
 ---
 
+# Tutorial 6: String Operations and Memory Manipulation
+
+## Problem
+Implement efficient string operations using x64 string instructions.
+
+### Skills Covered
+- String scanning with `scasb`
+- String copying with `lodsb`/`stosb` 
+- String comparison with `cmpsb`
+- Memory manipulation techniques
+
+### Functions to Implement
+```c
+size_t strlen_asm(const char* str);     // Calculate string length
+void strcpy_asm(char* dest, const char* src);  // Copy strings
+int memcmp_asm(const void* ptr1, const void* ptr2, size_t num);  // Compare memory
+```
+
+**Key Assembly Instructions:**
+- `scasb` - Scan string for byte in AL
+- `lodsb` - Load byte from [RSI] into AL
+- `stosb` - Store AL into [RDI]
+- `cmpsb` - Compare bytes at [RSI] and [RDI]
+- `cld` - Clear direction flag (forward)
+
+**Expected Output:** String length: 14, String copy, Memory comparison results
+
+---
+
+# Tutorial 7: Array Processing and Pointer Arithmetic
+
+## Problem
+Process arrays efficiently using assembly with proper pointer arithmetic.
+
+### Skills Covered
+- Array traversal patterns
+- Pointer arithmetic in assembly
+- Matrix indexing calculations
+- Search algorithms
+
+### Functions to Implement
+```c
+long array_sum_asm(const long* arr, size_t count);
+int array_search_asm(const long* arr, size_t count, long target);
+long array_max_asm(const long* arr, size_t count);
+long matrix_get_asm(const long* matrix, size_t rows, size_t cols, size_t row, size_t col);
+```
+
+**Key Concepts:**
+- Pointer increment: `addq $8, %rsi` (for 8-byte longs)
+- Matrix indexing: `(row * cols + col) * sizeof(element)`
+- Conditional moves for comparisons
+
+**Expected Output:** Array sum: 70, Max: 17, Search results, Matrix access
+
+---
+
+# Tutorial 8: Bitwise Operations and Bit Manipulation
+
+## Problem
+Implement efficient bit manipulation algorithms using x64 bit operations.
+
+### Skills Covered
+- Population count (number of 1 bits)
+- Bit field extraction and manipulation
+- Bit rotation operations
+- Power-of-2 detection
+
+### Functions to Implement
+```c
+int popcount_asm(uint64_t value);
+uint64_t extract_bits_asm(uint64_t value, int start_bit, int num_bits);
+uint64_t set_bit_asm(uint64_t value, int bit_position);
+uint64_t rotate_left_asm(uint64_t value, int positions);
+int is_power_of_2_asm(uint64_t value);
+```
+
+**Key Instructions:**
+- `shl`/`shr` - Shift left/right
+- `rol`/`ror` - Rotate left/right
+- `and`/`or`/`xor` - Bitwise operations
+- `bsf`/`bsr` - Bit scan forward/reverse
+
+**Expected Output:** Bit manipulation results, power-of-2 detection
+
+---
+
+# Tutorial 9: Floating Point Operations with SSE
+
+## Problem
+Use SSE (Streaming SIMD Extensions) for efficient floating-point operations.
+
+### Skills Covered
+- SSE scalar operations (`addss`, `mulss`)
+- SSE packed operations (`addps`, `mulps`)
+- Vector processing (4 floats at once)
+- SSE comparisons and conversions
+
+### Functions to Implement
+```c
+float add_floats_sse(float a, float b);
+void add_vectors_sse(const float* a, const float* b, float* result);
+float dot_product_sse(const float* a, const float* b, int count);
+float sqrt_sse(float value);
+```
+
+**Key Instructions:**
+- `movss` - Move scalar single-precision
+- `movups` - Move unaligned packed singles
+- `addss`/`addps` - Add scalar/packed singles
+- `mulss`/`mulps` - Multiply scalar/packed singles
+- `sqrtss` - Square root scalar single
+
+**Expected Output:** SSE arithmetic results, vector operations
+
+---
+
+# Tutorial 10: Mixed C++/Assembly Programming
+
+## Problem
+Integrate assembly code with C++ programs, handling calling conventions and object interactions.
+
+### Skills Covered
+- C++ to assembly function calls
+- Assembly to C++ callbacks
+- Object member access in assembly
+- Template and class integration
+
+### Components
+- Assembly functions callable from C++
+- C++ class methods using assembly
+- Callback mechanisms
+- Inline assembly in C++ methods
+
+**Key Concepts:**
+- System V ABI compliance
+- `this` pointer handling
+- Exception safety in mixed code
+
+**Expected Output:** Mixed function call results, object interactions
+
+---
+
+# Tutorial 11: Debugging Optimized Code
+
+## Problem
+Understand and debug compiler-optimized assembly code.
+
+### Skills Covered
+- Recognizing optimization patterns
+- Debugging with missing variables
+- Understanding inlined functions
+- Compiler transformation analysis
+
+### Common Optimizations
+- **Constant folding**: `a + b + c` becomes immediate value
+- **Loop unrolling**: Multiple iterations per loop body
+- **Function inlining**: Function calls eliminated
+- **Dead code elimination**: Unused code removed
+- **Register allocation**: Variables kept in registers
+
+**Analysis Tools:**
+```bash
+gcc -O0 -S code.c -o unoptimized.s
+gcc -O2 -S code.c -o optimized.s
+diff unoptimized.s optimized.s
+```
+
+**Expected Output:** Performance comparisons, optimization analysis
+
+---
+
+# Tutorial 12: Understanding C++ Object Layout and VTables
+
+## Problem
+Analyze C++ object memory layout and virtual function call mechanisms.
+
+### Skills Covered
+- Object memory layout analysis
+- VTable structure understanding
+- Virtual function call tracing
+- Multiple inheritance pointer adjustment
+
+### Key Concepts
+- **VTable pointer**: First 8 bytes of objects with virtual functions
+- **Virtual calls**: Load vtable, index into vtable, call function
+- **Multiple inheritance**: Multiple vtable pointers, pointer adjustment
+- **RTTI**: Runtime type information storage
+
+**Assembly Patterns:**
+```assembly
+# Virtual function call
+mov    (%rdi),%rax        # Load vtable pointer
+call   *0x8(%rax)         # Call vtable[1]
+
+# Object construction
+mov    $vtable,%rax       # Load vtable address
+mov    %rax,(%rdi)        # Store in object
+```
+
+**Expected Output:** Object sizes, vtable analysis, inheritance behavior
+
+---
+
+# Tutorial 13: Reverse Engineering Stripped Binaries
+
+## Problem
+Analyze and understand a stripped binary with no debug symbols.
+
+### Skills Covered
+- Function boundary identification
+- Algorithm reconstruction
+- Pattern recognition in assembly
+- Dynamic analysis techniques
+
+### Analysis Approach
+1. **Static Analysis**: Strings, entry points, call graphs
+2. **Dynamic Analysis**: Execution tracing, input/output correlation
+3. **Pattern Recognition**: Common compiler patterns, library calls
+4. **Hypothesis Testing**: Predict behavior, verify with execution
+
+**Tools Used:**
+- GDB for dynamic analysis
+- `strings` for literal extraction
+- `objdump` for disassembly
+- Pattern matching scripts
+
+**Challenge:** Reverse engineer functions that implement:
+- Number processing (quadratic with modulo)
+- String transformation (ROT13 encoding)
+- Structure manipulation
+
+---
+
+# Tutorial 14: Dynamic Library Debugging
+
+## Problem
+Debug shared libraries that are loaded at runtime using `dlopen()`.
+
+### Skills Covered
+- Dynamic loading mechanism understanding
+- Symbol resolution debugging
+- Library boundary tracing
+- Runtime linking analysis
+
+### Key Concepts
+- **PLT/GOT**: Procedure Linkage Table and Global Offset Table
+- **Symbol binding**: Lazy vs eager binding
+- **Library constructors/destructors**
+- **Memory mapping**: ASLR and relative addressing
+
+### Debugging Techniques
+```bash
+# Break on library load
+(gdb) catch load libexample.so
+
+# Trace dynamic calls
+(gdb) break dlopen
+(gdb) break dlsym
+
+# Library analysis
+LD_DEBUG=all ./program
+ltrace ./program
+```
+
+**Expected Output:** Dynamic loading traces, symbol resolution
+
+---
+
+## Advanced Debugging Resources
+
+### Comprehensive Guides
+- **debug.md** - Complete guide for debugging stripped C++ libraries
+- **lldb.md** - LLDB debugging reference (alternative to GDB)
+- **gdb_cheatsheet.md** - Quick reference for GDB commands
+
+### Additional Tools
+- **Makefile** - Build system for all tutorials
+- **Tutorial analysis files** - Detailed guides for complex tutorials
+
 ## Next Steps
 
 After completing these tutorials:
