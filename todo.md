@@ -7,10 +7,12 @@
 
 
 ## Medium Priority
-
+- [ ] Create advanced tutorials on SIMD (AVX/AVX2)
+- [ ] Create tutorial on syscalls and kernel interface
+- [ ] Create tutorial on stack buffer overflow detection
 
 ## Low Priority
-
+- [ ] Add examples of real-world assembly patterns
 
 ## Done
 - [x] Created CLAUDE.md file with workflow instructions
@@ -33,3 +35,10 @@
 - [x] Test all examples compile and run correctly
 - [x] Create README.md with tutorial explanations
 - [x] Create .gitignore file
+- [x] Update README.md with new tutorials 6-12
+- [x] Create a Makefile for easy compilation of all tutorials
+- [x] Create GDB cheat sheet for assembly debugging
+- [x] Create debug.md for debugging C++ libraries without symbols
+- [x] Create lldb.md for LLDB debugging
+- [x] Create Tutorial 13: Reverse engineering stripped binaries
+- [x] Create Tutorial 14: Dynamic library debugging

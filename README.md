@@ -41,6 +41,41 @@ This repository contains a progressive learning path that takes you from basic x
 - **Focus**: Assembly-level debugging of stripped binaries
 - **Skills**: Reverse engineering, GDB assembly debugging, function analysis
 
+#### Tutorial 6: String Operations and Memory Manipulation
+- **Files**: `tutorial6.c`, `tutorial6_complete.c`
+- **Focus**: String operations using x64 string instructions
+- **Skills**: Using scasb, lodsb/stosb, cmpsb for efficient string handling
+
+#### Tutorial 7: Array Processing and Pointer Arithmetic
+- **Files**: `tutorial7.c`, `tutorial7_complete.c`
+- **Focus**: Efficient array operations and pointer manipulation
+- **Skills**: Array traversal, pointer arithmetic, matrix indexing
+
+#### Tutorial 8: Bitwise Operations and Bit Manipulation
+- **Files**: `tutorial8.c`, `tutorial8_complete.c`
+- **Focus**: Bit manipulation techniques and optimization tricks
+- **Skills**: Population count, bit extraction, rotation, power-of-2 checks
+
+#### Tutorial 9: Floating Point Operations with SSE
+- **Files**: `tutorial9.c`, `tutorial9_complete.c`
+- **Focus**: SIMD operations using SSE instructions
+- **Skills**: SSE arithmetic, vector operations, packed operations
+
+#### Tutorial 10: Mixed C++/Assembly Programming
+- **Files**: `tutorial10.cpp`, `tutorial10_complete.cpp`
+- **Focus**: Integrating assembly with C++ code
+- **Skills**: Calling conventions, C++ object handling, bidirectional calls
+
+#### Tutorial 11: Debugging Optimized Code
+- **Files**: `tutorial11.cpp`, `optimization_analysis.md`
+- **Focus**: Understanding compiler optimizations and their effects
+- **Skills**: Recognizing optimization patterns, debugging optimized binaries
+
+#### Tutorial 12: Understanding C++ Object Layout and VTables
+- **Files**: `tutorial12.cpp`, `vtable_analysis.md`
+- **Focus**: C++ object memory layout and virtual function implementation
+- **Skills**: VTable analysis, inheritance debugging, object layout
+
 ## Quick Start
 
 ### Prerequisites
@@ -69,14 +104,36 @@ This repository contains a progressive learning path that takes you from basic x
    
    # Tutorial 4: Function calls
    gcc -g -o tutorial4 tutorial4_complete.c && ./tutorial4
+   
+   # Tutorial 6: String operations
+   gcc -g -o tutorial6 tutorial6_complete.c && ./tutorial6
+   
+   # Tutorial 7: Array processing
+   gcc -g -o tutorial7 tutorial7_complete.c && ./tutorial7
+   
+   # Tutorial 8: Bitwise operations
+   gcc -g -o tutorial8 tutorial8_complete.c && ./tutorial8
+   
+   # Tutorial 9: Floating point with SSE
+   gcc -g -o tutorial9 tutorial9_complete.c && ./tutorial9
+   
+   # Tutorial 10: Mixed C++/Assembly
+   g++ -g -o tutorial10 tutorial10_complete.cpp && ./tutorial10
    ```
 
-3. **Practice debugging**:
+3. **Advanced debugging**:
    ```bash
    # Tutorial 5: Debug a "black box" library
    g++ -c -O0 library.cpp -o library.o
    g++ -g -O0 main.cpp library.o -o debug_example
    gdb ./debug_example
+   
+   # Tutorial 11: Analyze optimizations
+   g++ -O0 -g tutorial11.cpp -o tutorial11_debug
+   g++ -O2 -g tutorial11.cpp -o tutorial11_optimized
+   
+   # Tutorial 12: Examine C++ objects
+   g++ -g -o tutorial12 tutorial12.cpp && ./tutorial12
    ```
 
 ### Learning Path
@@ -116,6 +173,13 @@ Each tutorial produces specific, verifiable output:
 - **Tutorial 3**: `Factorial of 5 is: 120`
 - **Tutorial 4**: Fibonacci sequence 0-10
 - **Tutorial 5**: `Result: 35` (after reverse engineering)
+- **Tutorial 6**: String operations - length, copy, compare
+- **Tutorial 7**: Array sum: 70, max: 17, matrix access
+- **Tutorial 8**: Bit manipulation operations
+- **Tutorial 9**: SSE floating point and vector operations
+- **Tutorial 10**: Mixed C++/Assembly function calls
+- **Tutorial 11**: Optimization analysis and benchmarking
+- **Tutorial 12**: C++ object layout and virtual function calls
 
 ## Real-World Applications
 
@@ -151,9 +215,25 @@ After completing these tutorials:
 ├── tutorial3_complete.c   # Control flow (solution)
 ├── tutorial4.c            # Function calls (skeleton)
 ├── tutorial4_complete.c   # Function calls (solution)
-├── library.cpp            # Debug target library
-├── main.cpp               # Debug main program
-└── debug_tutorial.md      # Tutorial 5 instructions
+├── tutorial5/
+│   ├── library.cpp        # Debug target library
+│   ├── main.cpp           # Debug main program
+│   └── debug_tutorial.md  # Tutorial 5 instructions
+├── tutorial6.c            # String operations (skeleton)
+├── tutorial6_complete.c   # String operations (solution)
+├── tutorial7.c            # Array processing (skeleton)
+├── tutorial7_complete.c   # Array processing (solution)
+├── tutorial8.c            # Bitwise operations (skeleton)
+├── tutorial8_complete.c   # Bitwise operations (solution)
+├── tutorial9.c            # SSE operations (skeleton)
+├── tutorial9_complete.c   # SSE operations (solution)
+├── tutorial10.cpp         # Mixed C++/Assembly (skeleton)
+├── tutorial10_complete.cpp # Mixed C++/Assembly (solution)
+├── tutorial11.cpp         # Optimization analysis
+├── optimization_analysis.md # Tutorial 11 guide
+├── tutorial12.cpp         # C++ object layout
+├── vtable_analysis.md     # Tutorial 12 guide
+└── .gitignore             # Version control exclusions
 ```
 
-Start with `tut.md` for the complete learning experience!# assm
+Start with `tut.md` for the complete learning experience!
