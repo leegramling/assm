@@ -1,0 +1,61 @@
+# Compiled executables
+tutorial1
+tutorial2
+tutorial3
+tutorial4
+tutorial6
+tutorial7
+tutorial8
+tutorial9
+tutorial10
+tutorial11_debug
+tutorial11_optimized
+tutorial12
+debug_example
+
+# Object files
+*.o
+*.obj
+
+# Compiler output
+*.s
+*.asm
+
+# Debug files
+*.pdb
+*.ilk
+core
+*.dSYM/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build directories
+build/
+Debug/
+Release/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# GDB history
+.gdb_history
+
+# Backup files
+*.bak
+*.backup

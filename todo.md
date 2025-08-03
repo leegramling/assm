@@ -23,5 +23,13 @@
 - [x] Create Tutorial 3: Control flow and jumps
 - [x] Create Tutorial 4: Function calls and stack manipulation
 - [x] Create Tutorial 5: Debugging C++ libraries with GDB
+- [x] Create Tutorial 6: String operations and memory manipulation
+- [x] Create Tutorial 7: Array processing and pointer arithmetic
+- [x] Create Tutorial 8: Bitwise operations and bit manipulation
+- [x] Create Tutorial 9: Floating point operations with SSE
+- [x] Create Tutorial 10: Mixed C++/Assembly programming
+- [x] Create Tutorial 11: Debugging optimized code
+- [x] Create Tutorial 12: Understanding C++ object layout and vtables
 - [x] Test all examples compile and run correctly
 - [x] Create README.md with tutorial explanations
+- [x] Create .gitignore file
